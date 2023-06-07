@@ -4,7 +4,8 @@ import {extendTheme, type ThemeConfig} from "@chakra-ui/react";
 const config: ThemeConfig =
 {
     // Set the color mode to the user's OS color mode.
-    initialColorMode: "system"
+    initialColorMode: "system",
+    useSystemColorMode: false
 }
 
 const theme = extendTheme({config});

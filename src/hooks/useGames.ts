@@ -3,10 +3,11 @@ import apiClient from "../services/apiClient";
 import {CanceledError} from "axios";
 
 // Interface to describe a game object.
-interface Game
+export interface Game
 {
     id: number,
-    name: string
+    name: string,
+    background_image: string
 }
 
 // Interface to describe a GameResponse object which contains Game[].

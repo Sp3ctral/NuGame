@@ -1,33 +1,16 @@
-import {useEffect, useState} from "react";
-import apiClient from "../services/apiClient";
-import {Alert, AlertIcon, Stack} from "@chakra-ui/react";
+// A Game grid component that renders games into a grid.
 
-interface Game
-{
-    id: number,
-    name: string
-}
-
-interface GameResponse
-{
-    count: number,
-    results: Game[]
-}
+import {Alert, AlertIcon} from "@chakra-ui/react";
+import useGames from "../hooks/useGames";
 
 const GameGrid = () =>
 {
-    const [games, setGames] = useState<Game[]>([]);
-    const [error, setError] = useState("");
-
-    useEffect(() =>
-    {
-        apiClient.get<GameResponse>("/mgames")
-        .then((res) => setGames(res.data.results))
-        .catch((err) => setError(err.message + ". "));
-    })
+    // Custom hook to get the games and any error if applicable.
+    const {games, error} = useGames();
 
     return (
         <>
+            {/* Return the error as an alert otherwise render the games.*/}
             {
                 error &&
                 <Alert marginTop="15" justifyContent="center" status='error'>

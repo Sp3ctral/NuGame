@@ -1,3 +1,5 @@
+// NavBar component that contains the navbar and logo.
+
 import {HStack, Image} from "@chakra-ui/react";
 import logo from "../assets/Nu.png";
 import ColorModeSwitch from "./ColorModeSwitch";

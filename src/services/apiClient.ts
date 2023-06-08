@@ -1,3 +1,6 @@
+// API client that contains the baseURL and the parameters needed
+// for the requests made to rawg. Enables methods offered by Axios.
+
 import axios from "axios";
 
 export default axios.create(

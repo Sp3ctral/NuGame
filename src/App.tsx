@@ -13,7 +13,7 @@ function App()
               <GridItem area="nav">
                   <NavBar />
               </GridItem>
-              {/* Show only on devices that are large and above. */}
+              {/* Show sidebar on devices that are large and above. */}
               <Show above="lg">
                   <GridItem area="aside">Aside</GridItem>
               </Show>

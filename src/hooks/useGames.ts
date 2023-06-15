@@ -2,12 +2,21 @@ import {useEffect, useState} from "react";
 import apiClient from "../services/apiClient";
 import {CanceledError} from "axios";
 
+export interface Platform
+{
+    id: number,
+    name: string,
+    slug: string
+}
+
 // Interface to describe a game object.
 export interface Game
 {
     id: number,
     name: string,
-    background_image: string
+    background_image: string,
+    parent_platforms: {platform: Platform}[]
+    metacritic: number
 }
 
 // Interface to describe a GameResponse object which contains Game[].

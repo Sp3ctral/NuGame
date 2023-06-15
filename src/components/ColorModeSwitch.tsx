@@ -8,7 +8,7 @@ const ColorModeSwitch = () =>
     return (
         <HStack>
             {/*Set the color mode to dark if dark, add the change color hook on change.*/}
-            <IconButton marginRight="5" size="lg" aria-label="Dark mode" icon={<Icon as={colorMode === "dark" ?
+            <IconButton borderRadius="full" marginRight="5" size="lg" aria-label="Dark mode" icon={<Icon as={colorMode === "dark" ?
                 BsFillMoonStarsFill : BsMoonStars} />} onClick={toggleColorMode}/>
         </HStack>
     )

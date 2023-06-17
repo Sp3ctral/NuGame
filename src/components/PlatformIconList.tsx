@@ -39,7 +39,7 @@ const PlatformIconList = ({platforms}: Props) =>
 
     return(
         <>
-            {/* Return a stylized platform icon for each icon. */}
+            {/* Return a stylized platform icon for each available platform. */}
             <HStack marginY={2}>
                 {platforms.map((platform) =>
                     (

@@ -14,7 +14,7 @@ interface Props
 const GameCard = ({game}: Props) =>
 {
     return(
-        <Card borderRadius={10} overflow="hidden">
+        <Card marginX={{base: 4}} borderRadius={10} overflow="hidden">
             <Image draggable="false" src={getCroppedImageUrl(game.background_image)} />
             <CardBody>
                 {/* HStack is needed here to align the scores on the right of the headers. */}

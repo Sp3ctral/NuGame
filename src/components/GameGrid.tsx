@@ -3,11 +3,12 @@
 import {Alert, AlertIcon, SimpleGrid} from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
+import CardSkeleton from "./CardSkeleton";
 
 const GameGrid = () =>
 {
     // Custom hook to get the games and any error if applicable.
-    const {games, error} = useGames();
+    const {games, error, isLoading} = useGames();
 
     return (
         <>
@@ -18,7 +19,8 @@ const GameGrid = () =>
                     <AlertIcon />{error + "Please refresh the page."}
                 </Alert>
             }
-            <SimpleGrid columns={{sm: 1, md:2, lg: 3, xl: 4}} spacing={8}>
+            <SimpleGrid columns={{sm: 1, md:2, lg: 3, xl: 4}} spacing={6}>
+                {isLoading && games.map(game => <CardSkeleton key={game.id} />)}
                 {games.map((game) => <GameCard key={game.id} game={game} />)}
             </SimpleGrid>
         </>

@@ -6,7 +6,7 @@ const GameSkeleton = () =>
 {
     // The skeleton card styles must match the Card element exactly.
     return(
-    <Card marginX={{base: 4}} borderRadius={10} overflow="hidden">
+    <Card>
         <Skeleton />
         <CardBody>
             <SkeletonText />

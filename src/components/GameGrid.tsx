@@ -9,7 +9,7 @@ import GameCardContainer from "./GameCardContainer";
 const GameGrid = () =>
 {
     // Custom hook to get the games and any error if applicable.
-    const {games, error, isLoading} = useGames();
+    const {data, error, isLoading} = useGames();
 
     return (
         <>
@@ -20,9 +20,9 @@ const GameGrid = () =>
                     <AlertIcon />{error + "Please refresh the page."}
                 </Alert>
             }
-            <SimpleGrid columns={{sm: 1, md:2, lg: 3, xl: 4}} spacing={6}>
+            <SimpleGrid columns={{sm: 1, md:2, lg: 3, xl: 4}} paddingX={5} spacing={6}>
                 {
-                    isLoading && games.map(game =>
+                    isLoading && data.map(game =>
                     (
                         <GameCardContainer>
                             <CardSkeleton key={game.id} />
@@ -30,7 +30,7 @@ const GameGrid = () =>
                     ))
                 }
                 {
-                    games.map(game => (
+                    data.map(game => (
                         <GameCardContainer>
                             <GameCard key={game.id} game={game} />
                         </GameCardContainer>

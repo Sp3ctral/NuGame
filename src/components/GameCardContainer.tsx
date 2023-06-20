@@ -13,7 +13,7 @@ const GameCardContainer = ({children}: Props) =>
 {
     // Wrap the children passed into this component with shared styles.
     return(
-        <Box marginX={{base: 4}} borderRadius={10} overflow="hidden">
+        <Box borderRadius={10} overflow="hidden">
             {children}
         </Box>
     )

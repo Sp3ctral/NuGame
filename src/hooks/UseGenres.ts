@@ -7,6 +7,6 @@ export interface Genre
     image_background: string
 }
 
-const UseGenres = () => UseData<Genre>("/dgenres");
+const UseGenres = () => UseData<Genre>("/genres");
 
 export default UseGenres;

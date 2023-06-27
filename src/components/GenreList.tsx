@@ -1,13 +1,19 @@
-import useGenres from "../hooks/UseGenres";
-import {HStack, Image, List, ListItem, Skeleton, Text} from "@chakra-ui/react";
+import useGenres, {Genre} from "../hooks/UseGenres";
+import {Button, HStack, Image, List, ListItem, Skeleton} from "@chakra-ui/react";
 import getCroppedImageUrl from "../services/image-url";
 
-const GenreList = () =>
+interface Props
+{
+    onSelectGenre: (genre: Genre) => void
+}
+
+const GenreList = ({onSelectGenre}: Props) =>
 {
     const {data, isLoading} = useGenres();
 
     return(
         <>
+            {/* We don't need to use ternary rendering here since the genre list will be browser-cached. */}
             {isLoading && <Skeleton height="100%" borderRadius={5} isLoaded={!isLoading} fadeDuration={1} />}
             <List>
                 {
@@ -16,7 +22,9 @@ const GenreList = () =>
                             <HStack>
                                 <Image boxSize="38px" fit="cover" borderRadius={8}
                                        src={getCroppedImageUrl(genre.image_background)}/>
-                                <Text fontSize="lg">{genre.name}</Text>
+                                <Button onClick={() => onSelectGenre(genre)} padding={2} colorScheme="blue" borderRadius={15}
+                                        height="auto" whiteSpace="normal" textAlign="left" fontSize="lg"
+                                        variant="ghost">{genre.name}</Button>
                             </HStack>
                         </ListItem>)}
             </List>

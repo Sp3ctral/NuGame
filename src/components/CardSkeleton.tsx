@@ -7,7 +7,7 @@ const GameSkeleton = () =>
     // The skeleton card styles must match the Card element exactly.
     return(
     <Card>
-        <Skeleton />
+        <Skeleton height="200px" />
         <CardBody>
             <SkeletonText />
         </CardBody>

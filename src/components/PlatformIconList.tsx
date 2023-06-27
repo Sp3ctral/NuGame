@@ -44,7 +44,7 @@ const PlatformIconList = ({platforms}: Props) =>
                 {platforms.map((platform) =>
                     (
                         //TODO: Find an elegant way to give each platform its own color!
-                        <Icon color="red.400" as={iconMap[platform.slug]} />
+                        <Icon key={platform.slug} color="red.400" as={iconMap[platform.slug]} />
                     ))}
             </HStack>
         </>

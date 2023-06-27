@@ -4,9 +4,13 @@ import {Grid, GridItem, Show} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import {useState} from "react";
+import {Genre} from "./hooks/UseGenres";
 
 function App()
 {
+    const [selectedGenre, setGenre] = useState<Genre | null>(null);
+
   return (
       <>
           {/* Grid that contains the areas needed for the webapp. */}
@@ -20,12 +24,12 @@ function App()
               {/* Show sidebar on devices that are large and above. */}
               <Show above="lg">
                   <GridItem area="aside" paddingX={3}>
-                      <GenreList />
+                      <GenreList onSelectGenre={setGenre} />
                   </GridItem>
               </Show>
               <GridItem area="main">
                   {/* Game grid component to render the fetched games. */}
-                  <GameGrid />
+                  <GameGrid selectedGenre={selectedGenre} />
               </GridItem>
           </Grid>
       </>

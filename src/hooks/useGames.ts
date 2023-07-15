@@ -1,5 +1,6 @@
 import useData from "./UseData";
 import {Genre} from "./UseGenres";
+import {GameQuery} from "../App";
 
 export interface Platform
 {
@@ -18,12 +19,19 @@ export interface Game
     metacritic: number
 }
 
-const useGames = (selectedGenre: Genre | null) => useData<Game>("/games",
+const useGames = (gameQuery: GameQuery) => useData<Game>("/games",
     {
         // Send the genre we are interested in to the useData hook so we can send an API request
-        params: {genres: selectedGenre?.id}
+        params:
+            {
+                genres: gameQuery.genre?.id,
+                parent_platforms: gameQuery.platform?.id
+            }
     },
-    [selectedGenre?.id] // the useEffect hook in the useData hook depends on the genre id to send requests
+    [
+        // Any time that this object changes, re-fetch the data.
+        gameQuery
+    ]
 );
 
 export default useGames;

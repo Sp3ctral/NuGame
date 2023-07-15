@@ -1,15 +1,22 @@
 // Main entrypoint for the NuGame webapp.
-
 import {Grid, GridItem, Show} from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import {useState} from "react";
 import {Genre} from "./hooks/UseGenres";
+import PlatformSelector from "./components/PlatformSelector";
+import {Platform} from "./hooks/useGames";
+
+export interface GameQuery
+{
+    genre: Genre | null;
+    platform: Platform | null;
+}
 
 function App()
 {
-    const [selectedGenre, setGenre] = useState<Genre | null>(null);
+    const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
       <>
@@ -24,12 +31,14 @@ function App()
               {/* Show sidebar on devices that are large and above. */}
               <Show above="lg">
                   <GridItem area="aside" paddingX={3}>
-                      <GenreList onSelectGenre={setGenre} />
+                      <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})} />
                   </GridItem>
               </Show>
               <GridItem area="main">
+                  <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} />
+
                   {/* Game grid component to render the fetched games. */}
-                  <GameGrid selectedGenre={selectedGenre} />
+                  <GameGrid gameQuery={gameQuery} />
               </GridItem>
           </Grid>
       </>

@@ -16,7 +16,7 @@ const PlatformSelector = ({selectedPlatform, onSelectPlatform}: Props) =>
     return(
         // Render the platform selector if there isn't any error...
         !error &&
-        <Box marginBottom={10} marginLeft={5}>
+        <Box>
             <Menu isLazy={true}>
                 <MenuButton as={Button} rightIcon={<BsChevronDown />}>
                     {selectedPlatform?.name || "All Platforms"}

@@ -3,7 +3,7 @@
 
 const getCroppedImageUrl = (url: string) =>
 {
-    return url.replace(/(\/media\/)/, "$1crop/600/400/");
+    return url && url.replace(/(\/media\/)/, "$1crop/600/400/");
 }
 
 export default getCroppedImageUrl;

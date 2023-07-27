@@ -13,6 +13,7 @@ export interface GameQuery
 {
     genre: Genre | null;
     platform: Platform | null;
+    sortOption: string;
 }
 
 function App()
@@ -38,7 +39,7 @@ function App()
               <GridItem area="main">
                   <HStack spacing={5} marginBottom={10} marginLeft={5}>
                       <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} />
-                      <SortSelector />
+                      <SortSelector sortOrder={gameQuery.sortOption} onSelectSortOption={(sortOption) => setGameQuery({...gameQuery, sortOption})} />
                   </HStack>
 
                   {/* Game grid component to render the fetched games. */}

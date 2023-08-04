@@ -14,6 +14,7 @@ export interface GameQuery
     genre: Genre | null;
     platform: Platform | null;
     sortOption: string;
+    searchText: string
 }
 
 function App()
@@ -28,18 +29,21 @@ function App()
               templateColumns={{base: "1fr", lg: "200px 1fr"}}
           >
               <GridItem area="nav">
-                  <NavBar />
+                  <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})}/>
               </GridItem>
               {/* Show sidebar on devices that are large and above. */}
               <Show above="lg">
                   <GridItem area="aside" paddingX={3}>
-                      <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({...gameQuery, genre})} />
+                      <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) =>
+                          setGameQuery({...gameQuery, genre})} />
                   </GridItem>
               </Show>
               <GridItem area="main">
                   <HStack spacing={5} marginBottom={10} marginLeft={5}>
-                      <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})} />
-                      <SortSelector sortOrder={gameQuery.sortOption} onSelectSortOption={(sortOption) => setGameQuery({...gameQuery, sortOption})} />
+                      <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) =>
+                          setGameQuery({...gameQuery, platform})} />
+                      <SortSelector sortOrder={gameQuery.sortOption} onSelectSortOption={(sortOption) =>
+                          setGameQuery({...gameQuery, sortOption})} />
                   </HStack>
 
                   {/* Game grid component to render the fetched games. */}

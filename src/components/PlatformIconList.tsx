@@ -38,14 +38,12 @@ const PlatformIconList = ({platforms}: Props) =>
         }
 
     return(
+        platforms.length > 0 &&
         <>
             {/* Return a stylized platform icon for each available platform. */}
             <HStack marginY={2}>
-                {platforms.map((platform) =>
-                    (
-                        //TODO: Find an elegant way to give each platform its own color!
-                        <Icon key={platform.slug} color="red.400" as={iconMap[platform.slug]} />
-                    ))}
+                {platforms.map((platform) => iconMap[platform.slug] !== undefined &&
+                    <Icon key={platform.slug} color="red.400" as={iconMap[platform.slug]} />)}
             </HStack>
         </>
     )

@@ -22,11 +22,11 @@ const GameCard = ({game}: Props) =>
             <Image draggable="false" src={getCroppedImageUrl(game.background_image)} />
             <CardBody>
                 {/* HStack is needed here to align the scores on the right of the headers. */}
-                <HStack justifyContent="space-between">
-                    <Heading fontSize="2xl">{game.name}</Heading>
+                <HStack marginBottom={2} justifyContent="space-between">
+                    <PlatformIconList platforms={platforms} />
                     <CriticScore score={game.metacritic} />
                 </HStack>
-                <PlatformIconList platforms={platforms} />
+                <Heading fontSize="2xl">{game.name}</Heading>
             </CardBody>
         </Card>
     )

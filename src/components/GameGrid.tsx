@@ -1,7 +1,7 @@
 // A Game grid component that renders games into a grid.
 
 import {Alert, AlertIcon, SimpleGrid} from "@chakra-ui/react";
-import useGames from "../hooks/useGames";
+import useGames, {Game} from "../hooks/useGames";
 import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import GameCardContainer from "./GameCardContainer";
@@ -28,7 +28,8 @@ const GameGrid = ({gameQuery}: Props) =>
             }
             <SimpleGrid columns={{sm: 1, md:2, lg: 3, xl: 4}} paddingX={5} spacing={6}>
                 {
-                    data.map(game => (
+                    // @ts-ignore
+                    data.map((game:Game) => (
                         <GameCardContainer key={game.id}>
                             {isLoading ? <CardSkeleton /> : <GameCard game={game} />}
                         </GameCardContainer>

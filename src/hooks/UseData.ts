@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import apiClient from "../services/apiClient";
-import {AxiosRequestConfig, CanceledError} from "axios";
+import {AxiosRequestConfig, AxiosResponse, CanceledError} from "axios";
 
 interface fetchResponse<T>
 {
@@ -33,7 +33,7 @@ const UseData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
         // We also pass a request config to the api client to tell the API the request body . e.g: /games.genre
         apiClient
         .get<fetchResponse<T>>(endpoint, {signal: controller.signal, ...requestConfig})
-        .then((res) =>
+        .then((res: AxiosResponse) =>
         {
             // @ts-ignore
             setData(res.data.results);

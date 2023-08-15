@@ -5,6 +5,7 @@ import {Card, CardBody, Heading, HStack, Image} from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
+import Emoji from "./Emoji";
 
 interface Props
 {
@@ -24,7 +25,10 @@ const GameCard = ({game}: Props) =>
                 {/* HStack is needed here to align the scores on the right of the headers. */}
                 <HStack marginBottom={2} justifyContent="space-between">
                     <PlatformIconList platforms={platforms} />
-                    <CriticScore score={game.metacritic} />
+                    <HStack>
+                        <CriticScore score={game.metacritic} />
+                        <Emoji rating={game.metacritic ? game.rating_top : null} />
+                    </HStack>
                 </HStack>
                 <Heading fontSize="2xl">{game.name}</Heading>
             </CardBody>

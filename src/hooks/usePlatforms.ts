@@ -1,12 +1,6 @@
-import useData from "./UseData";
+import platforms from "../data/platforms";
 
-interface Platform
-{
-    id: number;
-    name: string;
-    slug: string;
-}
-
-const usePlatforms = () => useData<Platform[]>("/platforms/lists/parents");
+// Use static data for the platforms as they won't change often
+const usePlatforms = () => ({data: platforms, error: null})
 
 export default usePlatforms;

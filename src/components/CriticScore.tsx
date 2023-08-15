@@ -4,19 +4,18 @@ import {Badge} from "@chakra-ui/react";
 
 interface Props
 {
-    score: number
+    score: number | null
 }
 
 const CriticScore = ({score}: Props) =>
 {
     // Dynamically determine the color of each score badge based on the condition.
-    let color = score <= 50 ? "red" : score <= 70 ? "yellow"
-        : score >= 70 ? "green"
-        : "";
+    let color = !score ? "orange" : score <= 50 ? "red" : score <= 70 ? "yellow"
+        : score >= 70 ? "green" : "";
 
     // Return a stylized badge with the score.
     return <Badge colorScheme={color} fontSize={"18px"} paddingX={2}
-                  borderRadius={6}>{score}</Badge>
+                  borderRadius={6}>{score || "—"}</Badge>
 }
 
 export default CriticScore;

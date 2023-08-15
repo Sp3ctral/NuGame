@@ -10,6 +10,7 @@ interface Props
 
 const GenreList = ({selectedGenre, onSelectGenre}: Props) =>
 {
+    // Keep the loading state instead we change our mind to not use static data and fetch from the server
     const {data, isLoading} = useGenres();
 
     return(

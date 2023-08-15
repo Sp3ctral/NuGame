@@ -35,6 +35,7 @@ const UseData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
         .get<fetchResponse<T>>(endpoint, {signal: controller.signal, ...requestConfig})
         .then((res) =>
         {
+            // @ts-ignore
             setData(res.data.results);
             setLoading(false);
         })

@@ -1,4 +1,4 @@
-// Use static data that won't really change that much for the genres
+// Use static data that won't likely change that much for the genres
 export default [
     {
         "id": 4,
